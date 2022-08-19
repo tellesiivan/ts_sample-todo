@@ -18,14 +18,16 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="h-screen w-screen bg-[#06120e] p-2">
-      <h2 className="text-2xl text-white text-center mt-4">Quikfy</h2>
+    <div className="h-screen w-screen bg-[#06120e] p-2 flex flex-col items-center">
+      <h2 className="text-2xl text-white text-center mt-4 font-semibold">
+        Quikfy
+      </h2>
       <InputField
         value={task}
         setInputValue={setTask}
         handleAddTask={handleAddTask}
       />
-      {tasks.length > 0 && <TasksList tasks={tasks} />}
+      {tasks.length > 0 && <TasksList tasks={tasks} setTasks={setTasks} />}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 
 type InputFieldProps = {
   value: string;
@@ -11,15 +11,21 @@ const InputField = ({
   setInputValue,
   handleAddTask,
 }: InputFieldProps) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
   return (
     <form
-      className="h-11 w-96 mx-auto rounded-lg overflow-hidden pl-2 bg-[#0d231c] mt-3 flex flex-row text-xs"
-      onSubmit={handleAddTask}
+      className="h-11 w-96 mx-auto rounded-lg overflow-hidden pl-2 bg-[#0d231c] mt-3 flex flex-row text-sm"
+      onSubmit={(e: React.FormEvent) => {
+        handleAddTask(e);
+        inputRef.current?.blur();
+      }}
     >
       <input
         className="h-full bg-transparent w-3/4 outline-none border-none placeholder:text-gray-400 text-white"
         type="text"
         placeholder="Add task..."
+        ref={inputRef}
         value={value}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           setInputValue(e.target.value)

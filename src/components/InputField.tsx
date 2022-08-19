@@ -22,7 +22,7 @@ const InputField = ({
       }}
     >
       <input
-        className="h-full bg-transparent w-3/4 outline-none border-none placeholder:text-gray-400 text-white"
+        className="w-3/4 h-full text-white bg-transparent border-none outline-none placeholder:text-gray-400"
         type="text"
         placeholder="Add task..."
         ref={inputRef}
